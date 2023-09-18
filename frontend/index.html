@@ -8,7 +8,7 @@
                 let params = new URLSearchParams(window.location.search)
                 params.set("xAxis", document.getElementById("xAxis").value)
                 params.set("yAxis", document.getElementById("yAxis").value)
-                let url = "https://dssd-application.onrender.com/?" + params.toString()
+                let url = "http://127.0.0.1:3000?" + params.toString()
                 location.href = url
 
 
@@ -19,7 +19,7 @@
                 if (!params.has('xAxis')) {
                     params.set('xAxis', 'streams')
                     params.set('yAxis', 'in_spotify_playlists')
-                    let url = "https://dssd-application.onrender.com/?" + params.toString()
+                    let url = "http://127.0.0.1:3000?" + params.toString()
                     location.href = url
                     
                 }
@@ -55,5 +55,6 @@
             </div>
             <div id="changeAxesButtonDiv"><button id="changeAxesButton" onclick="changeAxes()">Change Axes</button></div>
         </div>
+        Data Collected from <a href="https://www.kaggle.com/datasets/nelgiriyewithana/top-spotify-songs-2023">"Top Spotify Songs 2023" by Nidula Elgiriyewithana</a>
     </body>
 </html>
