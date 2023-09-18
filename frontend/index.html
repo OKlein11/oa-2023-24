@@ -3,8 +3,57 @@
     <head>
         <script src="https://cdn.plot.ly/plotly-2.25.2.min.js" charset="utf-8"></script>
         <script type="module" src="graph.mjs"></script>
+        <script>
+            function changeAxes() {
+                let params = new URLSearchParams(window.location.search)
+                params.set("xAxis", document.getElementById("xAxis").value)
+                params.set("yAxis", document.getElementById("yAxis").value)
+                let url = "http://localhost:5500?" + params.toString()
+                location.href = url
+
+
+            }
+            function setupFunction() {
+                let params = new URLSearchParams(window.location.search)
+                console.log(params)
+                if (!params.has('xAxis')) {
+                    params.set('xAxis', 'streams')
+                    params.set('yAxis', 'in_spotify_playlists')
+                    let url = "http://localhost:5500?" + params.toString()
+                    location.href = url
+                    
+                }
+                document.getElementById("xAxis").value = params.get("xAxis")
+                document.getElementById("yAxis").value = params.get("yAxis")
+            }
+        </script>
     </head>
-    <body>
+    <body onload="setupFunction()">
         <div id="graph"></div>
+        <div id="selectors">
+            <div id="xAxisSelector">
+                <label for="xAxis">Select an option for the X-Axis: </label>
+                <select name="xAxis" id="xAxis">
+                    <option value="released_year">Year Released</option>
+                    <option value="in_spotify_playlists"># of Spotify Playlists</option>
+                    <option value="in_spotify_charts">Spotify Chart Location</option>
+                    <option value="streams">Streams</option>
+                    <option value="bpm">Beats per Minute</option>
+                    <option value="danceability_%">Danceability %</option>
+                </select>
+            </div>
+            <div id="yAxisSelector">
+                <label for="yAxis">Select an option for the Y-Axis: </label>
+                <select name="yAxis" id="yAxis">
+                    <option value="released_year">Year Released</option>
+                    <option value="in_spotify_playlists"># of Spotify Playlists</option>
+                    <option value="in_spotify_charts">Spotify Chart Location</option>
+                    <option value="streams">Streams</option>
+                    <option value="bpm">Beats per Minute</option>
+                    <option value="danceability_%">Danceability %</option>
+                </select>
+            </div>
+            <div id="changeAxesButtonDiv"><button id="changeAxesButton" onclick="changeAxes()">Change Axes</button></div>
+        </div>
     </body>
 </html>
