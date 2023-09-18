@@ -8,7 +8,7 @@
                 let params = new URLSearchParams(window.location.search)
                 params.set("xAxis", document.getElementById("xAxis").value)
                 params.set("yAxis", document.getElementById("yAxis").value)
-                let url = "http://localhost:5500?" + params.toString()
+                let url = "https://dssd-application.onrender.com/?" + params.toString()
                 location.href = url
 
 
@@ -19,7 +19,7 @@
                 if (!params.has('xAxis')) {
                     params.set('xAxis', 'streams')
                     params.set('yAxis', 'in_spotify_playlists')
-                    let url = "http://localhost:5500?" + params.toString()
+                    let url = "https://dssd-application.onrender.com/?" + params.toString()
                     location.href = url
                     
                 }

@@ -29,7 +29,7 @@ def home():
 
 
 def getAxis(axis):
-    data = pd.read_csv("newBackend/spotify-2023.csv")
+    data = pd.read_csv("spotify-2023.csv")
     rowSeries = data[axis]
     listOfValues = rowSeries.to_list()
     return listOfValues
